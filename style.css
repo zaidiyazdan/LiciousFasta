@@ -85,12 +85,17 @@ ul>a:hover{
     height: 270px;
 }
 .routes-containers{
-    min-height: 60vh;
+    min-height: 80vh;
     font-size: 1.2em;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* padding:  20px 200px ; */
+    max-width: 1000px;
+    margin: 30px auto;
+    font-family:  Arial, Helvetica, sans-serif;
     flex-direction: column;
+    /* text-align:center; */
 }
 .menu-container{
     display: flex;
@@ -157,7 +162,7 @@ ul>a:hover{
 }
 
 /* CSS */
-.button-87 {
+button {
   /* margin: 10px; */
   padding: 12px 30px;
   text-align: center;
@@ -201,6 +206,7 @@ ul>a:hover{
     border: 3px solid black;
     padding: 40px;
     border-radius: 10px;
+    width: 340px;
     text-align: center;
     background-color: #181818;
     color: white;
@@ -208,5 +214,12 @@ ul>a:hover{
 
 .form-container input{
     margin: 10px;
-    height: 20px;
+    height: 24px;
+    text-align: center;
+    width: 260px;
+    border-radius: 5px;
+    border: 3px solid #fc8019;
+}
+.form-container button{
+    margin: 15px auto;
 }

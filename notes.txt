@@ -363,4 +363,4 @@ path: "/restraunt/:id"  (here :id is what is used to render component dynamicall
 
 //Now if we pass any id after rhe restaurant it will reder the component dynamically.
 //But for that we need to read that id no which is begin passed.
-// So to read the parameter we use a hook form the react router dom names : useParams which let us use the dynamic variable.
+// So to read the parameter we use a hook form the react router dom named : useParams which let us use the dynamic variable.
