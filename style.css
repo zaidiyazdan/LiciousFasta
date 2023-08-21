@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Darker Grotesque', sans-serif;
+}
+.logo{
+    width: 130px;
+    margin: 10px 70px;
+}
+.header{
+    /* border: 3px solid black; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+nav>ul{
+    display: flex;
+    list-style: none;
+    font-size: 1.6em;
+    margin-right: 80px;
+}
+ul>li{
+    margin: 0 18px;
+}
+ul>a{
+    text-decoration: none;
+    margin: 0 6px;
+}
+ul>a:hover{
+    color:#fc8019;
+    cursor: pointer;
+}
+.card{
+    /* border: 2px solid black; */
+    width:  220px;
+    padding: 10px;
+    margin: 10px;
+    /* margin: 20px; */
+    color: rgba(2, 6, 12, 0.6);
+}
+.card>h2{
+    font-weight: 700;
+    color: black;
+}
+.card > *{
+    margin: 5px 0;
+}
+.card>img{
+    width: 100%;
+    border-radius: 10px;
+}
+.card:hover{
+    transform: scale(0.95);
+    transition: all .1s ease-out;
+}
+
+.restraunt-container{
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    padding:  0 36px 36px 36px;
+    max-width: 1050px;
+}
+
+.restraunt-container>a{
+    text-decoration: none;
+}
+
+/* styling shimmer ui */
+
+.shimmer-container{
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    padding: 36px;
+    max-width: 1050px;
+}
+.shimmer-card{
+    width:  220px;
+    margin: 10px auto;
+    height: 270px;
+}
+.routes-containers{
+    min-height: 60vh;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.menu-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    margin: 50px auto;
+}
+.menu-card{
+    width:200px;
+    /* background-color: #ffe645c4; */
+    padding: 10px;
+    height: 250px;
+    /* color: white; */
+    font-size: 1.2em;
+    margin: 15px 10px;
+    text-align: center;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+.menu-image{
+    width:100%;
+}
+.rest{
+    display: flex;
+    margin: 60px auto;
+    /* background-color: rgba(255, 31, 31, 0.19); */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 40px;
+}
+.rest>img{
+    height: 280px;
+    border-radius: 4px;
+
+}
+.right{
+    margin:0 40px;
+}
+
+.menu>h1{
+    font-size: 4em;
+}
+
+.restaurant-menu-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.search-container{
+    width: 600px;
+    margin: 8px auto;
+    margin-top: 25px;
+    /* background-color: rgba(158, 158, 158, 0.729); */
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-imput{
+    text-align: center;
+    width: 60%;
+}
+
+/* CSS */
+.button-87 {
+  /* margin: 10px; */
+  padding: 12px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #fff;
+  background-image: linear-gradient(45deg, #FF512F 0%, #ff9500  51%, #FF512F  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-87:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.button-87:active {
+  transform: scale(0.8);
+}
+.form-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    height: 100vh;
+}
+.form-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 3px solid black;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #181818;
+    color: white;
+}
+
+.form-container input{
+    margin: 10px;
+    height: 20px;
+}

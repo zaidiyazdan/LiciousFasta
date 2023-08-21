@@ -1,0 +1,366 @@
+import React from "react"
+import ReactDOM from "react-dom/client"
+// Default Import
+import Header from "../components/Header"
+// Named Import
+import { Title } from "../components/Header"
+// It is not object destructuring 
+
+// For multiple imports
+// import {* as Obj} from "./components/Header" 
+// import Heade, {Title} from "../components/Header"
+// in export default we can change the name but try to use same. 
+
+// Header
+//  - logo
+//  - Nav Items(Right side)
+//  - Cart
+// Body
+//     - Search bar
+//     - Restraunt
+//         - RestrauntCard
+//             - Image
+//             - Name
+//             - Rating
+//             - Cusines
+// Footer
+//     - links
+//     - Copyright
+
+
+// Config driven UI : when we style our frontend on the basis of the data coming from the backend.
+
+// For example there can be different offers going in different cities so we will update our ui offers section based on data provided by the API 
+// In system design tell to interviewer: 
+
+
+
+
+
+// Now lets see how to make the cards dynamics (Rendering on the basis of API call)
+//Using the props 
+
+
+// we can do it in many ways some of them are to destructure it in parameter itself by passing the spreaded object in the argument
+// Destructuring the props object in the parameter
+const RestrauntCard = (props) => {
+    // Destructuring the coming object.
+    const {name,cloudinaryImageId,cuisines,avgRating} = props.restaurant.data.data;
+    console.log(name,cloudinaryImageId,avgRating);
+    return (
+        <div className="card">
+            <img src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"+cloudinaryImageId}/>
+            <h2>{name}</h2>
+            <h4>
+                {avgRating} stars
+            </h4>
+            <h3>{cuisines.slice(0,2).join(',')}</h3>
+        </div>
+    )
+}
+
+// Props : what ever we pass as attribute in the component.
+// It is noting just normal parameters and arguments
+// All the attributes will be wraped in a single object whiich we have to destructure in our component while using.
+
+
+const Body = () => {
+    return (
+        <div className="restraunt-container">
+            {/*Same as: {RestrauntCard(restraunt[0])} */}
+            {
+                // never use index as a key
+                restraunt.map((res,i)=>{
+                    return <RestrauntCard restaurant={res} key={res.data.data.id}/>
+                })
+            }
+        </div>
+    )
+}
+
+const styleObj = {
+    backgroundColor: "yellow",
+    textAlign: "center",
+    height: "100px",
+    fontSize: "24px",
+}
+
+// Writing inline styles in jsx or we can give the whole object in the style itself.
+const Footer = () => {
+    return(
+        <h4 style={styleObj}>Footer</h4>
+    )
+}
+
+// There should be one parent element in jsx
+
+// React.Fragment :: is a component which is exported by the react which can be used to wrap as parent (when we don't want to use div we use this fragment component) it is like a empty tag (<> </>) we can not give style it we can not pass any attribute.
+
+// jsx can only have one parent
+
+
+const AppLayout = () => {
+    return (
+        <>
+            {/* <Title/> */}
+            <Header/>
+            <Body />
+            <Footer/>
+        </>
+    )
+}
+
+// const h1 = React.createElement("h1",{},"Lets check");
+
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+
+
+root.render(<AppLayout/>);
+
+// Virtual DOM : representation of DOM in our code
+// we need it for reconciliation (it is a algo which react uses to dif one tree from other and it teremine what need to change and what not)
+// It just re render the specific component.
+
+
+******************************************************************I****
+
+
+// why should we use default.
+// We can export only one thing with export default;
+
+// Another way is exporting it direct in the name. we have to use {} in it , it is called named Import
+
+There are 2 different types of exporting a data from a js file 
+
+1. By export default (In this we can only export one thing from the file it means we export default only one component)
+eg: export default Header;
+
+it can be simply imported by
+import Component form "path"
+
+2> export before the components ( In this way we can export multiple data form the single file is can by imported in 2 Ways);
+
+import { data1,data2,...,datan} from "path"
+import * as Obj form "path" // in this case it will import all the things in the Obj.
+
+* We can give the file extention in path or not it depends on us.
+
+//What is state
+//What is Hooks
+//What is useState
+
+Hook is nothing its just a normal js functions we get this function from the react (which was written by facebook developers)
+there are various Hooks in react. one of them is useState.
+Hooks come with some functionality.
+
+ 
+//useState().
+
+useState() is used to create local state variables in react.
+make a state variable inside the componet.
+
+useState return an array first item of array is variable name and second is a callback function which can be used to modify that state variable.
+
+In react we create variable by using the useState() 
+it comes as a name import from react : import {useState} from "react"
+
+To give default value to the useState() pass its value in useState("intialValue");
+
+using useState() :
+
+const [stateVariable,setStateVaiable] = useState("DevaultValue"); 
+
+Two way binding : it means updating and reading the value at same time.
+
+
+// Why do we really need the state variable ?
+
+If we use the normal js variables in react then they do not re-render on the UI whenever they are changed.where as (react will not konw that it has to rerender the variable if its value is changed).
+
+if we make the varibles by using the useSate() they will be re rendered on the UI also.
+
+// What happens behind the state ?
+
+When we crate the variable using useState() react keeps track of it and if the variable changes then react rerender the whole component. (reconciliation is happining).
+
+//What are microservices ?
+In this we have small samll different projects for example: for ui , for api, for notification,for authentication and many more.
+in this there  is sepration of concern : every other are independent of each other to work
+We can different tech stack over here 
+this is why big compnies use multiple tech stack
+// Different projects are linked trough different ports and mostly under the same domain name.
+// Here we are just creating UI project.
+
+//Monolith architecture : when the whole website was in only one prject and everyone have to work on the same repository.
+
+//Using the data from the api in react (Making api calls)
+
+there are 2 ways to render the data from api
+1. when the page loads first make the api call and then render the data
+(here the page will we available after some thing)
+2. First render some thing and then make the api call and update the UI when data is got.
+(Here the page will be available fast)
+// to make this functionality react have given us hook (useEffect()); (second one)
+
+//useEffect() is a function (Hook) containing a callback funtion 
+//component will render on state changes and if our props changes.
+//after every rerender our useEffect will be called but if we don't want to call it in every rerender pass a dependecy array into it.
+//The callback function of use useEffect will be called the first time when our ui renders and after that whenever our elements in dependecy array changes.
+//It have 2 arguments 1.callback function 2.dependency array.
+
+
+// Dekho hamara jo component hota hai vo baar baar rerender hota hai to usse agar hme api call maarni hai to vo bhi baar baar jaigy aur data shi se fetch bhi nhi ho paiga so is lie hum useEffect use karte hai jisme hamara callback function specific elements ke change hone pe hi call karta hai nhi to vo baar baar rerender hone pe call nhi maarta. isse hamara data properly fetch ho jata hai (kyu ke fatching a data from api takes time)
+
+//if useEffect is not dependent on anything it will be called just once.
+// useEffect is called after the initial render
+//If we have useEffect with empty dependecy array then it will be called just once and after intial render.
+//empty dependecy => once after Initial render 
+//dep array[Somethings] => once after initial render + everytime after our dep aray elements are re rendered.
+
+//if we want to make api call only once and then we will make it in useEffect with empty dependecy array.
+
+//if we don't have the dependency array only so use effect will we called every time our component is rerendered (after each render).
+
+//Imp note...
+//Always use optional chaining when reading a property of object from a API call
+//First render then our use effect will work.
+Never create a component inside component.
+Never write a useSate inside if else,for loop.
+Never make the hooks outside the component
+
+Reach give you useState so that you can make local state variable inside functional component Don't make it outside.
+
+//IMPORTING IMAGES IN OUR COMPONENTS.
+
+// name assets / img in src.
+1.Import the image in the component from our local folder path.
+and then just give the src as that imported name inside the js.
+//Genrally...
+//big compnies keeps thier images in cdn.
+//Why it is good to host image on cdn?
+
+
+// For making shimmer (using package is not good) make your own shimmer.
+// You don't want npm package for every small thing. Try to implement them by your own it would be much better to increase skills.
+//When there is complex application then using a packages in good.
+//eg: a website containing lot of forms.(can use package called *formkik)
+
+
+//When your are creating an app Always be aware of what packages are you importing.
+
+//Formik : good to make forms in react.
+////////////////////////////////////////////
+
+//We will be routing today.
+// Making different pages for our react app.
+// We will use npm package React Router. (version - 6 )
+
+// Install : npm install react-router-dom
+
+//import {createBrowserRouter} from "react-router-dom"
+// this createBrowserRouter function is coming from the react router.
+
+// we will use 2 things from router : createBrowserRouter,RouterProviter.
+
+//Always create router below our app AppLayout(because of hoisting)
+
+
+
+// Make router Configration in App Component.
+you also need to import all the component to which u will be routing inside the app component
+
+const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        element: <AppLayout/>
+    },
+    {
+        path: "/about"
+        element: <About/>
+    }
+])
+
+RouterProviter : it is a component provided by react router dom
+//Render RouterProviter insted of AppLayout in the root.render
+and provide the RouterProviter a router which we made.
+
+root.render = (<RouterProviter router={appRouter}/>);
+//by doing this what ever root will render it will do it accourding to the router configration.
+
+//Errors in react router DOM...................
+
+//There is predefined error page in the react router ..
+we can make our own error page and render it on page when error is made by putting errorElement: property in our config object.
+//We want to show more information about the error on our error page.
+//React router dom gives us a hook useRouteError.
+//useRouteError gives us the error object : which gives the information about the error which is happening.(like status and status text).
+
+*************************************************
+
+//Lets now implement when we click about we should go to about us page.(Will use Link which is exactly jsut like a anchor tag)
+
+//Problem with anchor tag: when we click anchor tag it refreshes the whole page which is not good in react as we build single page application.
+
+//What is the single page application.
+Single page application do not make network call to fetch its data.
+We do not need to refresh these single page applications.
+ 
+//There are two types of Routing.
+1.client side routing.(React use this method as the data to component is already there)
+// We don't want to load anyting from the server.
+
+2.server side routing.(it is the way in which all our pages come from the server: we use to do it earlier)
+
+
+//Link in react router dom : it is used exactly as we use anchor tag. But it will not Reload the whole page.
+//But the end of the day when you see the code in inspact you will find link is a anchor tag. (this is because browser understands anchor tag)
+//React router dom is keeping the track of all thsoe links.
+// We need to import the link react router dom
+//We will Give the link and use "to" attribute to add a relative path on which it go to.
+
+<Link to={"/about"}>
+    <li>About us</li>
+<Link/>
+
+
+//Nested Routing**************************
+
+//(Have to use the Outlet component to render them)
+//When we go to about us page there also we need header and footer.
+so we will have to change our routing config
+
+To do this use a property childrens in our confing: and all the child component in it 
+
+
+childern: [
+    {
+        path: "/page1",
+        element: <Page1/>
+    },
+    {
+        path: "/page2",
+        element: <Page2/>
+    },
+]
+
+///////OUTLET
+
+// We need to first import the Outlet component from our react route dom then render in the parent compont which contains the childen components with routes.
+
+If we cant to use nested route. then we use outlet.
+outlet will render childrens according to the config.
+it will select which child to render according to the route.
+
+Where ever we want to do conditional routing we use outlet is used like rendering the components at the same place based on different routing path.
+
+//Dynamic routing.*********************************
+
+it means if we change our route is changing dynamically (eg on based on id);
+
+//to render the componet dynamically we modify our path and paas a parameter in it for eg: 
+path: "/restraunt/:id"  (here :id is what is used to render component dynamically).
+
+//Now if we pass any id after rhe restaurant it will reder the component dynamically.
+//But for that we need to read that id no which is begin passed.
+// So to read the parameter we use a hook form the react router dom names : useParams which let us use the dynamic variable.
