@@ -6,7 +6,9 @@ const data = { email: 'demo1@gmail.com', password: 'Demo@123' }
 
 
 const Form = (props) => (
+  <>
   <div className='form-body'>
+  {/* <h1 className='form-head'>Welcome to LiciousFasta!!</h1> */}
   <div className='form-container'>
     <h1>Sign In</h1>
     <Formik
@@ -89,6 +91,7 @@ const Form = (props) => (
     </Formik>
   </div>
   </div>
+  </>
 );
 
 export default Form;

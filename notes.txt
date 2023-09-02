@@ -42,7 +42,9 @@ import { Title } from "../components/Header"
 
 
 // we can do it in many ways some of them are to destructure it in parameter itself by passing the spreaded object in the argument
+
 // Destructuring the props object in the parameter
+
 const RestrauntCard = (props) => {
     // Destructuring the coming object.
     const {name,cloudinaryImageId,cuisines,avgRating} = props.restaurant.data.data;
@@ -61,6 +63,8 @@ const RestrauntCard = (props) => {
 
 // Props : what ever we pass as attribute in the component.
 // It is noting just normal parameters and arguments
+
+//NOTE::
 // All the attributes will be wraped in a single object whiich we have to destructure in our component while using.
 
 
@@ -97,7 +101,6 @@ const Footer = () => {
 // React.Fragment :: is a component which is exported by the react which can be used to wrap as parent (when we don't want to use div we use this fragment component) it is like a empty tag (<> </>) we can not give style it we can not pass any attribute.
 
 // jsx can only have one parent
-
 
 const AppLayout = () => {
     return (
@@ -229,7 +232,7 @@ Never create a component inside component.
 Never write a useSate inside if else,for loop.
 Never make the hooks outside the component
 
-Reach give you useState so that you can make local state variable inside functional component Don't make it outside.
+REact give you useState so that you can make local state variable inside functional component Don't make it outside.
 
 //IMPORTING IMAGES IN OUR COMPONENTS.
 
@@ -332,7 +335,6 @@ so we will have to change our routing config
 
 To do this use a property childrens in our confing: and all the child component in it 
 
-
 childern: [
     {
         path: "/page1",
@@ -360,7 +362,64 @@ it means if we change our route is changing dynamically (eg on based on id);
 
 //to render the componet dynamically we modify our path and paas a parameter in it for eg: 
 path: "/restraunt/:id"  (here :id is what is used to render component dynamically).
+// We pass our id in the link by getting it from the data of a restaurant.
 
-//Now if we pass any id after rhe restaurant it will reder the component dynamically.
+after giving the id to the route to render the Restrurant based on that id no we have to read the id from route and render the restrurand data according to it.
+
 //But for that we need to read that id no which is begin passed.
 // So to read the parameter we use a hook form the react router dom named : useParams which let us use the dynamic variable.
+to read id from route we will use a hook called usePrams.
+now we can make api call according to our parameter which is the id no of restrurant.
+
+//to read a id (which is passed dynamically we use useParams)
+//we have dynamic route we can use useParams to read its data.
+//this is how we read dynamic url.
+
+////////////////////////////////////////
+
+//Nesting a path inside the path. (route inside the route)
+
+we can make childern of childern route in which we want to put the new route.
+//Give the relative path to it.
+for eg: 
+
+
+Note :: we will use a relative path to the parent in children.
+
+
+children : [
+    {
+        path: "/about",
+        element: <About/>
+        children: [
+            {
+                path: "profile", // path => /about/profile
+                element: <Profile/>
+            }
+        ]
+    }
+
+]
+
+///////////////////////////////////////////////////////////////////////////////
+2222222222222222222222222222222222222
+/*********CLASS BASED COMPONENTS***********/
+
+//Old projects are still running on class based components.
+//Are asked in interviews.
+
+syntax: 
+
+class ComponentName extends React.Component{
+    render(){
+
+    }
+}
+
+//Most import thing in class base component is render(){} method.
+//Here this render method returns some jsx.
+//Whatever we return from it gets inserted into a DOM.
+
+/////// PASSING PROPS IN CLASS BASED COMPONENT
+
+to read a prop we use this.props in class based component.

@@ -1,7 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import image from "../assets/img/Red Yellow Retro Food Delivery Logo.png";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // const logedUser = () => {

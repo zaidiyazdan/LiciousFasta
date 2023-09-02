@@ -182,6 +182,11 @@ button {
   touch-action: manipulation;
 }
 
+button:active{
+    transform: scale(0.9);
+    transition: all .2s;
+}
+
 .button-87:hover {
   background-position: right center;
   /* change the direction of the change here */
@@ -190,15 +195,26 @@ button {
 }
 
 .button-87:active {
-  transform: scale(0.8);
+    transform: scale(0.8);
 }
 .form-body{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background-color: #fff;
+    /* background-color: #EEEDED; */
     height: 100vh;
 }
+
+.form-head{
+    font-weight: 900;
+    font-size: 2.5em;
+    background-color:#ff9136f0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
 .form-container{
     display: flex;
     justify-content: center;
@@ -207,6 +223,7 @@ button {
     padding: 40px;
     border-radius: 10px;
     width: 340px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     text-align: center;
     background-color: #181818;
     color: white;
@@ -222,4 +239,8 @@ button {
 }
 .form-container button{
     margin: 15px auto;
+}
+
+.myImage{
+    width: 150px;
 }
