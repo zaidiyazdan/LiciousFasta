@@ -244,3 +244,13 @@ button:active{
 .myImage{
     width: 150px;
 }
+
+.dev-button{
+    color: white;
+    text-decoration: none;
+    padding: 16px;
+    background-color: black;
+    border-radius: 10px;
+    border: 2px solid red;
+
+}

@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom"
 import { Outlet } from "react-router-dom"
-import Profile from "./Profile"
 import { Component } from "react"
-import ProfileClass from "./ProfileClass.jsx"
 
 class About extends Component{
     constructor(props){
@@ -25,10 +23,9 @@ class About extends Component{
                     <h1>Our Mission</h1>
                     <p>Our mission is to bridge the gap between discerning food enthusiasts and the city's top restaurants. We believe that every meal should be an experience, a journey of flavors waiting to be discovered. With LiciousFasta, we bring together a curated selection of restaurants that define the gastronomic culture of Your City.</p>
                 </div>
-                <Link to={'profile'}>See developer</Link>
-                {/* <Outlet/> */}
-                {/* <Profile name="Ali"/>  */}
-                <ProfileClass name="Ali"/>
+                <Link to={'profile'} className="dev-button">See developer</Link>
+                <Outlet/>
+                {/* <ProfileClass name="Ali"/> */}
                 </div>
             )
         )

@@ -31,11 +31,10 @@ class ProfileClass extends React.Component {
     render(){
         return (
             <div>
-                <h1>Profile Class Component</h1>
+                <h1>Your Developer</h1>
                 <img src={this?.state?.userInfo?.avatar_url} style={{width:"100px"}}/>
                 <h2>Name: {this?.state?.userInfo?.name}</h2>
-                <h2>GitHub username: {this?.state?.userInfo?.login
-}</h2>
+                <h2>GitHub username: {this?.state?.userInfo?.login}</h2>
             </div>
         );
     }
