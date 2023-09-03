@@ -402,7 +402,7 @@ children : [
 ]
 
 ///////////////////////////////////////////////////////////////////////////////
-2222222222222222222222222222222222222
+
 /*********CLASS BASED COMPONENTS***********/
 
 //Old projects are still running on class based components.
@@ -423,3 +423,128 @@ class ComponentName extends React.Component{
 /////// PASSING PROPS IN CLASS BASED COMPONENT
 
 to read a prop we use this.props in class based component.
+
+when we pass props to the class base component what react to is it binds all the props to a class component with a props property which we can access by using this.props.propName;
+
+////// USING HOOKS IN CLASS BASED COMPONENT 
+
+we do it inside the constructor : 
+syntax: 
+    constructor(props){
+        super(props);
+        this.state = {
+            count: 0,
+            count2: 0,
+        }
+    }
+
+// If we want to make multiple states we do it inside the same state object 
+//React uses one state object to keep track of all the states.
+//Infunctional components also it does the same behind the scenes.
+
+// TO MODIFY THE STATE 
+we use this.setState({
+    count:1,
+})
+
+// WE WILL NEVER MUTATE STATE DIRECTLY 
+
+first of all constructor will be called and then render in class based components.
+
+///WHERE TO DO API CALLED
+
+use :: componentDidMount.
+
+//first constructor will be called then we will render then componentDidMount.
+
+constructor->render->componentDidMOunt.
+
+//componentDidMount is lifecycle method.
+
+componentDidMount(){
+    //this will called after the render. 
+}
+
+
+//lifecycle of a component in React components
+
+if we have child component inside the parent component having (both are class component)
+
+The order in which lifecycle goes is:
+
+1.Parent constructor
+2.children Render
+3.childern constructor
+4.Childern Render
+5.Childern componentDidMount
+6.Parent componentDidMOunt
+
+////BUT IF THERE ARE 2 CHILDREN::
+
+1.Parent constructor
+2.parent render
+3.constructor of first child
+4.render of first child
+5.constructor of second child
+6.render of first child
+7. componentDidMOunt of first childen
+8. componentDidMOunt of second childern
+9. Parent componentDidMOunt.
+
+//THIS IS BECAUSE ::: (rever React lifecycle methods diagram)
+
+* when react render things there are 2 phases.
+1. Render Phase(include constructor and render method) 
+2. Commit Phase. (include componentDidMOunt)
+
+In render phase constructor and render are called after that react updates the dom and in commit phase componentDidMOunt is called. 
+
+After the render and constructor is called we get the Initial html. 
+React first complete the render phase and then it continue to commit phase this is because if it starts the commit phase in between for eg: making api call in first child this will delay the render of second child .. which will stop the render phase which is not good.
+After that the react will update the dom.
+
+//If there is a api call then that didMount will be called afterwords (as api call contains async) 
+
+//////NOTE>>>
+
+//So if we have an api call then the didMount containing api call will be called last and after getting the data from api we need to update our state which will again trigger rerender this pahse of rerndering is known as update phase . and after completing this update phase componentDidUpdate is called.
+
+>>>Seeing only child where api call is mads.
+
+1.child constructor
+2.child render
+3.child didMount.
+//Api call is make
+4.setState is update
+
+<update Cycle>
+
+5.Render is called again to update the info.
+6.componentDidUpdate is called at last.
+
+//componentDidUpdate:: is called on every re render.
+///After first render componentDidMOunt is called and after every subsequence render componentDidUpdate is called.
+
+///In modern react code there is no concept of lifecycle methods.
+
+/////////NEVER COMPARE REACT LIFECYCLE METHOD TO FUNCTIOAL COMPONENTS///////
+
+//////COMPONENTWWILLUNMOUNT/////////
+what did componenWillUnmount(){} do or why do even need it.
+it unmount all the things which are going with that component.
+for eg: if you put set interval it will keep running in background even if you switch to another component.
+So you need to use clearInterval in componenWillUnmount.
+
+//How to do this in functional component.
+
+in useEffect(()=>{
+    //API CALL
+    setInveral(()=>{
+        console.log("HII);
+    },1000)
+
+    return ()=>{
+        //Here this works as componenWillUnmount
+        //We will clear our Interval over here otherwise it will keep running even after swiching the pages.
+    }
+})
