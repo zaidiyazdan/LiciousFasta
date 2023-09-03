@@ -25,7 +25,6 @@ class ProfileClass extends React.Component {
         } catch (error) {
             console.log(error);
         }
-        // console.log(data);
     }
 
     render(){

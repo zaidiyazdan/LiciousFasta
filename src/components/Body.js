@@ -2,15 +2,8 @@ import RestrauntCard from "./RestrauntCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { filterData } from "../utils/helper";
 
-// Filter function (filter algorithm)
-function filterData(input, list) {
-  const filterArray = list.filter((res) => {
-    // Converting both name to lowercase and then checking to remove case sensitivity.
-    return res?.info?.name.toLowerCase().includes(input.toLowerCase());
-  });
-  return filterArray;
-}
 
 const Body = () => {
   //How to avoid rendering a component.

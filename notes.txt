@@ -548,3 +548,31 @@ in useEffect(()=>{
         //We will clear our Interval over here otherwise it will keep running even after swiching the pages.
     }
 })
+
+/////////////////////////////////////////////////////////
+
+///OPTIMIZING OUR APP //
+
+//CREATING OUR OWN HOOKS
+
+1.Why to make custom hooks
+Reuseablity.
+Readablity.
+Maintainablity.
+Testable.
+
+2.When
+3.How
+
+//////There should be a common place where we keeps our utility function and import form there.
+
+//We make a folder named utils/shared/common.  where a js file made which keep our helper functions.
+//We do it as many components have access to that function and they can use them.
+
+
+//Always create a hook with use as prefix.
+//Create hook with small letter.
+
+//Hook is just a normal js function 
+we can add some functionality to it (it extracts some logic).
+it Can maintain its states.

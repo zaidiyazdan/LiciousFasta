@@ -1,36 +1,18 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { URL_IMG_LINK } from "../constant";
 import Shimmer from "./Shimmer";
+import useRestraurant from "../utils/useRestraurant";
 
 //to read a id (which is passed dynamically we use useParams)
 //we have dynamic route we can use useParams to read its data.
 //this is how we read dynamic url.
-
 const RestaurantMenu = () => {
-  const [restrurantDetails, SetRestrCurantDetails] = useState([]);
-  const [restraurantMenu, SetRestraurantMenu] = useState([]);
-  const { resId } = useParams();
 
-  useEffect(() => {
-    getRestrurantInfo();
-  }, []);
+const { resId } = useParams();
 
-  async function getRestrurantInfo() {
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.325159941073109&lng=77.13053986430168&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
-    );
-    const JsonData = await data.json();
-    console.log(JsonData?.data);
-    SetRestrCurantDetails(JsonData?.data);
-    SetRestraurantMenu(
-      JsonData?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
-        ?.card?.card?.itemCards
-    );
-  }
+const restrurantDetails = useRestraurant(resId);
 
-  if (restrurantDetails.length == 0) return <Shimmer/>;
-  if(!restraurantMenu) return;
+if (restrurantDetails.length == 0) return <Shimmer/>;
 
   return (
     <div className="restaurant-menu-container">
@@ -53,7 +35,8 @@ const RestaurantMenu = () => {
         <h1>Menu</h1>
         <div className="menu-container">
           {
-          restraurantMenu.map((res) => {
+          restrurantDetails?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
+          ?.card?.card?.itemCards.map((res) => {
             const { name, imageId, description, id,price } = res.card.info;
             return (
               <div key={id} className="menu-card">
