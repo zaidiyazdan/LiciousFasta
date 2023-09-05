@@ -242,7 +242,11 @@ button:active{
 }
 
 .myImage{
-    width: 150px;
+    position: relative;
+    width: 200px;
+    animation: about-radius infinite 4s ease-in-out;
+    box-shadow: 0 0 100px #852c0664;
+    display: block;
 }
 
 .dev-button{
@@ -252,5 +256,5 @@ button:active{
     background-color: black;
     border-radius: 10px;
     border: 2px solid red;
-
 }
+

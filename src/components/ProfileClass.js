@@ -31,7 +31,7 @@ class ProfileClass extends React.Component {
         return (
             <div>
                 <h1>Your Developer</h1>
-                <img src={this?.state?.userInfo?.avatar_url} style={{width:"100px"}}/>
+                <img src={this?.state?.userInfo?.avatar_url} className="myImage" />
                 <h2>Name: {this?.state?.userInfo?.name}</h2>
                 <h2>GitHub username: {this?.state?.userInfo?.login}</h2>
             </div>

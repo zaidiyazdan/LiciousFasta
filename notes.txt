@@ -576,3 +576,6 @@ Testable.
 //Hook is just a normal js function 
 we can add some functionality to it (it extracts some logic).
 it Can maintain its states.
+
+//Hook have its own reconciliation going on.
+seprate from the component as it is having its own seprate state.
